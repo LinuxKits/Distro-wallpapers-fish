@@ -1,2 +1,2 @@
-# CLIfor-Distro_Wallpapers-fish
+# Distro_wallpapers-CLI-fish
 fish script to install different wallpaper from each linux distros
