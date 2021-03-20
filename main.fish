@@ -35,7 +35,8 @@
             echo "11-mint | 12-plasma"
             echo "13-raspbian | 14-solus"
             echo "15-ubuntu | 16-Fedora"
-            echo "17-endeavour"
+            echo "17-endeavour | 18-MX-Linunx"
+            echo "19-antiX"
             echo "type the number follow and hit enter"
             read -P "inputbox>" dwallpaper
                 switch $dwallpaper
@@ -73,6 +74,10 @@
                         set -g distro Fedora;;install_local
                     case 17
                         set -g distro endeavour;;install_local
+                    case 18
+                        set -g distro MX-Linux;;install_local
+                    case 19
+                        set -g distro antiX;;install_local
                     case "*"
                         echo "unexcpet input"
                 end
@@ -88,7 +93,8 @@
             echo "11-mint | 12-plasma"
             echo "13-raspbian | 14-solus"
             echo "15-ubuntu | 16-Fedora"
-            echo "17-endeavour"
+            echo "17-endeavour | 18-MX-Linunx"
+            echo "19-antiX"
             echo ""
             echo "--------------------------"
             echo "Installed wallpaper"
@@ -131,7 +137,11 @@
                     case 16
                         set -g distro Fedora;;remove_local
                     case 17
-                        set -g distro endeavour;;install_local
+                        set -g distro endeavour;;remove_local
+                    case 18
+                        set -g distro MX-Linux;;remove_local
+                    case 19
+                        set -g distro antiX;;remove_local
                     case "*"
                         echo "unexcpet input"
                 end
