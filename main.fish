@@ -4,7 +4,7 @@
 	#head#
 	
 	function puller
-        cd ~/.cache/Distro_wallpapers-CLI-fish/;;wget https://github.com/happyeggchen/Distro_wallpapers/raw/master/raw/latest/$distro.tar.gz;;tar xvf $distro.tar.gz;;rm $distro.tar.gz;;cd
+        cd ~/.cache/Distro_wallpapers-CLI-fish/;;wget https://github.com/happyeggchen/Distro_wallpapers/raw/master/raw/latest/$distro.tar.gz;;tar xvf $distro.tar.gz >/dev/null 2>&1;;rm $distro.tar.gz;;cd
     end
     
     function install_local
