@@ -8,16 +8,16 @@
     
     function install_local
         if test -d wallpaper/$distro
-            cp -r wallpaper/$distro ~/.local/share/wallpapers;;echo $distro >> wallpaper/installed.dat
+            cp -r wallpaper/$distro ~/.local/share/wallpapers
         else
-            puller;;cp -r wallpaper/$distro ~/.local/share/wallpapers;;echo $distro >> wallpaper/installed.dat
+            puller;;cp -r wallpaper/$distro ~/.local/share/wallpapers
         end
     end
     
     
     function remove_local
         if test -d wallpaper/$distro
-            rm -rf wallpaper/$distro ~/.local/share/wallpapers;;sed -i '/$distro/s/.*//g' wallpaper/installed.dat
+            rm -rf wallpaper/$distro ~/.local/share/wallpapers
             rm -rf ~/.local/share/wallpapers/$distro
         else
             echo "not installed"
@@ -70,7 +70,7 @@
                 end
     end
     
-    function wallpaper_installer
+    function wallpaper_remover
             echo "remove a distro wallpaper"
             echo "1-Debian | 2-Pop_OS!"
             echo "3-Zorin-OS | 4-aosp"
@@ -80,8 +80,12 @@
             echo "11-mint | 12-plasma"
             echo "13-raspbian | 14-solus"
             echo "15-ubuntu"
+            echo ""
+            echo "--------------------------"
             echo "Installed wallpaper"
-            cat wallpaper/installed.dat
+            ls wallpaper/ | sed '\~//~d'
+            echo "--------------------------"
+            echo ""
             echo "type the number follow and hit enter"
             read rwallpaper
                 switch $rwallpaper
