@@ -35,7 +35,7 @@
             echo "13-raspbian | 14-solus"
             echo "15-ubuntu"
             echo "type the number follow and hit enter"
-            read -p dwallpaper
+            read dwallpaper
                 switch $dwallpaper
                     case 1
                         set -g distro Debian;;install_local
@@ -83,7 +83,7 @@
             echo "Installed wallpaper"
             cat wallpaper/installed.dat
             echo "type the number follow and hit enter"
-            read -p rwallpaper
+            read rwallpaper
                 switch $rwallpaper
                     case 1
                         set -g distro Debian;;remove_local
@@ -120,9 +120,14 @@
 #head_end#
 
 #body#
+    if test -d wallpaper
+    else
+    mkdir wallpaper
+    end
+
     echo "1-wallpaper_installer|2-wallpaper_remover"
     echo "type the number follow and hit enter"
-        read -p function
+        read function
             switch $function
                 case 1
                     wallpaper_installer
