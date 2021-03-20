@@ -2,22 +2,23 @@
 #this script is to download the wallpaper of each linux distros and use it as your wallpaper
 #part#
 	#head#
+	
 	function puller
-        cd ~/.cache/CLIfor-Distro_Wallpapers-fish/;;wget https://github.com/happyeggchen/Distro_wallpapers/raw/master/raw/latest/$distro.tar.gz;;tar xvf $distro.tar.gz;;rm $distro.tar.gz;;cd
+        cd ~/.cache/Distro_wallpapers-CLI-fish/;;wget https://github.com/happyeggchen/Distro_wallpapers/raw/master/raw/latest/$distro.tar.gz;;tar xvf $distro.tar.gz;;rm $distro.tar.gz;;cd
     end
     
     function install_local
-        if test -d ~/.cache/CLIfor-Distro_Wallpapers-fish/$distro
-            cp -r ~/.cache/CLIfor-Distro_Wallpapers-fish/$distro ~/.local/share/wallpapers
+        if test -d ~/.cache/Distro_wallpapers-CLI-fish/$distro
+            cp -r ~/.cache/Distro_wallpapers-CLI-fish/$distro ~/.local/share/wallpapers
         else
-            puller;;cp -r ~/.cache/CLIfor-Distro_Wallpapers-fish/$distro ~/.local/share/wallpapers
+            puller;;cp -r ~/.cache/Distro_wallpapers-CLI-fish/$distro ~/.local/share/wallpapers
         end
     end
     
     
     function remove_local
-        if test -d ~/.cache/CLIfor-Distro_Wallpapers-fish/$distro
-            rm -rf ~/.cache/CLIfor-Distro_Wallpapers-fish/$distro
+        if test -d ~/.cache/Distro_wallpapers-CLI-fish/$distro
+            rm -rf ~/.cache/Distro_wallpapers-CLI-fish/$distro
             rm -rf ~/.local/share/wallpapers/$distro
         else
             echo "not installed"
@@ -35,7 +36,7 @@
             echo "13-raspbian | 14-solus"
             echo "15-ubuntu"
             echo "type the number follow and hit enter"
-            read dwallpaper
+            read -P "inputbox>" dwallpaper
                 switch $dwallpaper
                     case 1
                         set -g distro Debian;;install_local
@@ -67,6 +68,8 @@
                         set -g distro solus;;install_local
                     case 15
                         set -g distro ubuntu;;install_local
+                    case "*"
+                        echo "unexcpet input"
                 end
     end
     
@@ -83,11 +86,11 @@
             echo ""
             echo "--------------------------"
             echo "Installed wallpaper"
-            ls ~/.cache/CLIfor-Distro_Wallpapers-fish/ | sed '\~//~d'
+            ls ~/.cache/Distro_wallpapers-CLI-fish/ | sed '\~//~d'
             echo "--------------------------"
             echo ""
             echo "type the number follow and hit enter"
-            read rwallpaper
+            read -P "inputbox>" rwallpaper
                 switch $rwallpaper
                     case 1
                         set -g distro Debian;;remove_local
@@ -119,29 +122,37 @@
                         set -g distro solus;;remove_local
                     case 15
                         set -g distro ubuntu;;remove_local
+                    case "*"
+                        echo "unexcpet input"
                 end
     end
+    
 #head_end#
 
 #body#
-    if test -d ~/.cache/CLIfor-Distro_Wallpapers-fish/
+
+    if test -d ~/.cache/Distro_wallpapers-CLI-fish/
         else
-            mkdir ~/.cache/CLIfor-Distro_Wallpapers-fish/
+            mkdir ~/.cache/Distro_wallpapers-CLI-fish/
     end
     
     if test -d ~/.local/share/wallpapers
         else 
             mkdir ~/.local/share/wallpapers
     end
-        
+    
     echo "1-wallpaper_installer|2-wallpaper_remover"
     echo "type the number follow and hit enter"
-        read function
+        read -P "inputbox>" function
             switch $function
                 case 1
                     wallpaper_installer
                 case 2
                     wallpaper_remover
+                case "*"
+                    echo "unexcpet input"
             end
+            
 #body_end#
+
 #part_end#
