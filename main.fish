@@ -34,7 +34,8 @@
             echo "9-lineageos | 10-manjaro_xfce"
             echo "11-mint | 12-plasma"
             echo "13-raspbian | 14-solus"
-            echo "15-ubuntu"
+            echo "15-ubuntu | 16-Fedora"
+            echo "17-endeavour"
             echo "type the number follow and hit enter"
             read -P "inputbox>" dwallpaper
                 switch $dwallpaper
@@ -68,6 +69,10 @@
                         set -g distro solus;;install_local
                     case 15
                         set -g distro ubuntu;;install_local
+                    case 16
+                        set -g distro Fedora;;install_local
+                    case 17
+                        set -g distro endeavour;;install_local
                     case "*"
                         echo "unexcpet input"
                 end
@@ -82,7 +87,8 @@
             echo "9-lineageos | 10-manjaro_xfce"
             echo "11-mint | 12-plasma"
             echo "13-raspbian | 14-solus"
-            echo "15-ubuntu"
+            echo "15-ubuntu | 16-Fedora"
+            echo "17-endeavour"
             echo ""
             echo "--------------------------"
             echo "Installed wallpaper"
@@ -122,6 +128,10 @@
                         set -g distro solus;;remove_local
                     case 15
                         set -g distro ubuntu;;remove_local
+                    case 16
+                        set -g distro Fedora;;remove_local
+                    case 17
+                        set -g distro endeavour;;install_local
                     case "*"
                         echo "unexcpet input"
                 end
