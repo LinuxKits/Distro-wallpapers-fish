@@ -3,21 +3,21 @@
 #part#
 	#head#
 	function puller
-        cd wallpaper/;;wget https://github.com/happyeggchen/Distro_wallpapers/raw/master/raw/latest/$distro.tar.gz;;tar xvf $distro.tar.gz;;rm $distro.tar.gz;;cd ..
+        cd ~/.cache/CLIfor-Distro_Wallpapers-fish/;;wget https://github.com/happyeggchen/Distro_wallpapers/raw/master/raw/latest/$distro.tar.gz;;tar xvf $distro.tar.gz;;rm $distro.tar.gz;;cd
     end
     
     function install_local
-        if test -d wallpaper/$distro
-            cp -r wallpaper/$distro ~/.local/share/wallpapers
+        if test -d ~/.cache/CLIfor-Distro_Wallpapers-fish/$distro
+            cp -r ~/.cache/CLIfor-Distro_Wallpapers-fish/$distro ~/.local/share/wallpapers
         else
-            puller;;cp -r wallpaper/$distro ~/.local/share/wallpapers
+            puller;;cp -r ~/.cache/CLIfor-Distro_Wallpapers-fish/$distro ~/.local/share/wallpapers
         end
     end
     
     
     function remove_local
-        if test -d wallpaper/$distro
-            rm -rf wallpaper/$distro ~/.local/share/wallpapers
+        if test -d ~/.cache/CLIfor-Distro_Wallpapers-fish/$distro
+            rm -rf ~/.cache/CLIfor-Distro_Wallpapers-fish/$distro
             rm -rf ~/.local/share/wallpapers/$distro
         else
             echo "not installed"
@@ -83,7 +83,7 @@
             echo ""
             echo "--------------------------"
             echo "Installed wallpaper"
-            ls wallpaper/ | sed '\~//~d'
+            ls ~/.cache/CLIfor-Distro_Wallpapers-fish/ | sed '\~//~d'
             echo "--------------------------"
             echo ""
             echo "type the number follow and hit enter"
@@ -124,11 +124,16 @@
 #head_end#
 
 #body#
-    if test -d wallpaper
-    else
-    mkdir wallpaper
+    if test -d ~/.cache/CLIfor-Distro_Wallpapers-fish/
+        else
+            mkdir ~/.cache/CLIfor-Distro_Wallpapers-fish/
     end
-
+    
+    if test -d ~/.local/share/wallpapers
+        else 
+            mkdir ~/.local/share/wallpapers
+    end
+        
     echo "1-wallpaper_installer|2-wallpaper_remover"
     echo "type the number follow and hit enter"
         read function
@@ -139,3 +144,4 @@
                     wallpaper_remover
             end
 #body_end#
+#part_end#
