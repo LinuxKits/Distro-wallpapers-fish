@@ -117,8 +117,21 @@ end
   echo "4 install the script to /usr/bin"
   echo "5 remove the script in /usr/bin"
   echo "type the number follow and hit enter"
-  read -P "input>" menu1
-    switch $menu1
+  switch $argv
+  case ""
+    read -P "input>" menu1
+      switch $menu1
+      case 1
+        wallpaper_list installer
+      case 2
+        wallpaper_list remover
+      case 3
+        wallpaper_list downloader
+      case 4
+        self_installer
+      case 5
+        self_remover
+      end
     case 1
       wallpaper_list installer
     case 2
