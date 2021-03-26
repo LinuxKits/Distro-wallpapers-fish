@@ -104,6 +104,7 @@ end
 
 if test -d /usr/share/wallpapers
       else
+          echo "no /usr/share/wallpapers , using sudo to create one"
           sudo mkdir /usr/share/wallpapers
 end
   echo "Script will need sudo to install wallpapers into /usr/share/wallpapers"
