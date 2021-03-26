@@ -14,6 +14,8 @@ type the number follow and hit enter
 input>
 ```
 # Detailed information
-- installer -> download and install wallpapers to /usr/share/wallpapers
-- remover -> scan all wallpapers which was installed by this script then remove it
-- self_installer -> install the script to /usr/bin/distro_wallpapers (use distro_wallpapers in shell to run this script)
+- 1 installer -> download and install wallpapers to /usr/share/wallpapers
+- 2 remover -> scan all wallpapers which was installed by this script then remove it
+- 3 puller -> simply pull the wallpapers dirs into ~/.cache/Distro_wallpapers-CLI-fish/
+- 4 self_installer -> install the script to /usr/bin/distro_wallpapers (use distro_wallpapers) in shell to run this script)
+- 5 self_remover -> remove the script from /usr/bin/
