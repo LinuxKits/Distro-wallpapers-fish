@@ -5,7 +5,7 @@
       tar xvf $distro.tar.gz >/dev/null 2>&1
       rm $distro.tar.gz
       cd
-      echo "Done!---stored in ~/.cache/Distro_wallpapers-CLI-fish/"
+      echo "[cli]Done!---stored in ~/.cache/Distro_wallpapers-CLI-fish/"
   end
 
   function self_installer
@@ -14,10 +14,12 @@
 
   function installer
       if test -d ~/.cache/Distro_wallpapers-CLI-fish/$distro
-          sudo cp -r ~/.cache/Distro_wallpapers-CLI-fish/$distro /usr/share/wallpapers
+          sudo mv ~/.cache/Distro_wallpapers-CLI-fish/$distro /usr/share/wallpapers/Distro_wallpapers-CLI-fish/
+          echo "[cli]Done!---Installed to /usr/share/wallpapers/distro_wallpapers-CLI-fish"
         else
           downloader
-          sudo cp -r ~/.cache/Distro_wallpapers-CLI-fish/$distro /usr/share/wallpapers
+          sudo mv ~/.cache/Distro_wallpapers-CLI-fish/$distro /usr/share/wallpapers/Distro_wallpapers-CLI-fish/
+          echo "[cli]Done!---Installed to /usr/share/wallpapers/distro_wallpapers-CLI-fish"
       end
   end
 
@@ -26,9 +28,10 @@
   end
 
   function remover
-      if test -d ~/.cache/Distro_wallpapers-CLI-fish/$distro
+      if test -d /usr/share/wallpapers/Distro_wallpapers-CLI-fish/$distro
           rm -rf ~/.cache/Distro_wallpapers-CLI-fish/$distro
-          sudo rm -rf /usr/share/wallpapers/$distro
+          sudo rm -rf /usr/share/wallpapers/Distro_wallpapers-CLI-fish/$distro
+          echo "[cli]Done!---removed from /usr/share/wallpapers/distro_wallpapers-CLI-fish"
         else
           echo "not installed"
       end
@@ -49,7 +52,7 @@
           echo "19-antiX"
       echo "----------local-------------"
           echo "Installed wallpaper"
-          ls ~/.cache/Distro_wallpapers-CLI-fish/ | sed '\~//~d'
+          ls /usr/share/wallpapers/Distro_wallpapers-CLI-fish/ | sed '\~//~d'
           echo "--------------------------"
           echo "type the number follow and hit enter"
           read -P "inputbox>" wallpaper
@@ -102,10 +105,10 @@ if test -d ~/.cache/Distro_wallpapers-CLI-fish/
           mkdir ~/.cache/Distro_wallpapers-CLI-fish/
 end
 
-if test -d /usr/share/wallpapers
+if test -d /usr/share/wallpapers/Distro_wallpapers-CLI-fish/
       else
-          echo "no /usr/share/wallpapers , using sudo to create one"
-          sudo mkdir /usr/share/wallpapers
+          echo "[error]no /usr/share/wallpapers/Distro_wallpapers-CLI-fish/ , using sudo to create one"
+          sudo mkdir /usr/share/wallpapers/Distro_wallpapers-CLI-fish/
 end
   echo "Script will need sudo to install wallpapers into /usr/share/wallpapers"
   echo "1 wallpaper installer"
