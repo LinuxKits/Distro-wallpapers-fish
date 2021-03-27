@@ -51,7 +51,7 @@
           echo "13-raspbian | 14-solus"
           echo "15-ubuntu | 16-Fedora"
           echo "17-endeavour | 18-MX-Linunx"
-          echo "19-antiX"
+          echo "19-antiX | 20-kubuntu"
       echo "----------local-------------"
           echo "Installed wallpaper"
           ls /usr/share/wallpapers/Distro_wallpapers-CLI-fish/ | sed '\~//~d'
@@ -97,6 +97,8 @@
                       set -g distro MX-Linux;;$argv
                   case 19
                       set -g distro antiX;;$argv
+                  case 20
+                      set -g distro kubuntu;;$argv
                   case "*"
                       echo "unexcpet input"
               end
