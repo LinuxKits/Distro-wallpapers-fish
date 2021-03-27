@@ -40,7 +40,7 @@
   function wallpaper_list
     echo "---------online-----------"
       echo 'last update ->' 
-       curl https://raw.githubusercontent.com/happyeggchen/Distro_wallpapers/testing/raw/latest/date.txt
+       curl https://media.githubusercontent.com/media/happyeggchen/Distro_wallpapers/testing/raw/latest/date.txt
        echo "Available distros' wallpapers"
           echo "1-Debian | 2-Pop_OS!"
           echo "3-Zorin-OS | 4-aosp"
