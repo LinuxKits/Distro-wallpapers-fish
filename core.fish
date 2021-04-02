@@ -62,7 +62,7 @@
                   case 1
                       set -g distro Debian;;$argv
                   case 2
-                      set -g distro Pop_OS!;;$argv
+                      set -g distro Pop_OS;;$argv
                   case 3
                       set -g distro Zorin-OS;;$argv
                   case 4
