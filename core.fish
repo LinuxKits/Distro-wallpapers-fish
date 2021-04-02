@@ -1,7 +1,7 @@
 #!/usr/bin/fish
   function downloader
       cd ~/.cache/Distro_wallpapers-CLI-fish/
-      wget https://github.com/happyeggchen/Distro_wallpapers/raw/master/raw/latest/$distro.tar.gz
+      wget https://github.com/LinuxKits/Distro_wallpapers/releases/download/v0.0.1/$distro.tar.gz
       tar xvf $distro.tar.gz >/dev/null 2>&1
       rm $distro.tar.gz
       cd
@@ -40,7 +40,7 @@
   function wallpaper_list
     echo "---------online-----------"
       echo 'last update ->' 
-       curl https://media.githubusercontent.com/media/happyeggchen/Distro_wallpapers/testing/raw/latest/date.txt
+       curl -L https://github.com/LinuxKits/Distro_wallpapers/releases/download/v0.0.1/date.txt
        echo "Available distros' wallpapers"
           echo "1-Debian | 2-Pop_OS!"
           echo "3-Zorin-OS | 4-aosp"
@@ -114,6 +114,8 @@ if test -d /usr/share/wallpapers/Distro_wallpapers-CLI-fish/
           echo "[error]no /usr/share/wallpapers/Distro_wallpapers-CLI-fish/ , using sudo to create one"
           sudo mkdir /usr/share/wallpapers/Distro_wallpapers-CLI-fish/
 end
+  echo "version 2021-04-02_12:17:14"
+  echo ""
   echo "Script will need sudo to install wallpapers into /usr/share/wallpapers"
   echo "1 wallpaper installer"
   echo "2 wallpaper remover"
