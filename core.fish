@@ -1,7 +1,7 @@
 #!/usr/bin/fish
   function downloader
       cd ~/.cache/Distro_wallpapers-CLI-fish/
-      wget https://github.com/LinuxKits/Distro_wallpapers/releases/download/v0.0.1/$distro.tar.gz
+      wget https://github.com/LinuxKits/Distro_wallpapers/releases/latest/download/$distro.tar.gz
       tar xvf $distro.tar.gz >/dev/null 2>&1
       rm $distro.tar.gz
       cd
@@ -39,8 +39,8 @@
 
   function wallpaper_list
     echo "---------online-----------"
-      echo 'last update ->' 
-       curl -L https://github.com/LinuxKits/Distro_wallpapers/releases/download/v0.0.1/date.txt
+      echo 'last update ->'
+       curl -L https://github.com/LinuxKits/Distro_wallpapers/releases/latest/download/date.txt
        echo "Available distros' wallpapers"
           echo "1-Debian | 2-Pop_OS!"
           echo "3-Zorin-OS | 4-aosp"
