@@ -114,7 +114,7 @@ if test -d /usr/share/wallpapers/Distro_wallpapers-CLI-fish/
           echo "[error]no /usr/share/wallpapers/Distro_wallpapers-CLI-fish/ , using sudo to create one"
           sudo mkdir /usr/share/wallpapers/Distro_wallpapers-CLI-fish/
 end
-  echo "version 2021-04-02_12:17:14"
+  echo "version 2021-04-05"
   echo ""
   echo "Script will need sudo to install wallpapers into /usr/share/wallpapers"
   echo "1 wallpaper installer"
