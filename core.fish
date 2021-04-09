@@ -3,7 +3,7 @@ function updater
   set -g version_online (curl -s -L https://raw.githubusercontent.com/LinuxKits/Distro-wallpapers-fish/master/version)
   if test "$version_online" = "$argv"
   else
-    echo -e "\033[32m[Updater]new version Available\033[0m"
+    echo -e "\033[32m[Updater]new version Available or network broken\033[0m"
   end
 end
 function checkdependence
