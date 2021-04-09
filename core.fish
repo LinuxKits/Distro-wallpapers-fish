@@ -1,18 +1,37 @@
 #!/usr/bin/fish
-  function downloader
+function checkversion
+  if curl -s -L
+
+function checkdependence
+  if test -e $argv
+    echo -e "\033[32m[checkdependence]check passed - $argv exist\033[0m"
+  else
+    echo -e "\033[0;31m[checkdependence]check failed - plz install $argv\033[0m"
+  end
+end
+
+function checknetwork
+  if curl -s -L https://github.com/LinuxKits/Distro-wallpapers | grep -q bluelake
+    echo -e "\033[32m[checknetwork]check passed - u`ve connect to github\033[0m"
+  else
+    echo -e "\033[0;31m[checknetwork]check failed - check your network connection\033[0m"
+  end
+end
+
+function downloader
       cd ~/.cache/Distro_wallpapers-CLI-fish/
-      wget https://github.com/LinuxKits/Distro_wallpapers/releases/latest/download/$distro.tar.gz
+      wget https://github.com/LinuxKits/Distro-wallpapers/releases/latest/download/$distro.tar.gz
       tar xvf $distro.tar.gz >/dev/null 2>&1
       rm $distro.tar.gz
       cd
       echo "[cli]Done!---stored in ~/.cache/Distro_wallpapers-CLI-fish/"
   end
 
-  function self_installer
+function self_installer
       sudo cp core.fish /usr/bin/distro_wallpapers
   end
 
-  function installer
+function installer
       if test -d ~/.cache/Distro_wallpapers-CLI-fish/$distro
           sudo mv ~/.cache/Distro_wallpapers-CLI-fish/$distro /usr/share/wallpapers/Distro_wallpapers-CLI-fish/
           echo "[cli]Done!---Installed to /usr/share/wallpapers/distro_wallpapers-CLI-fish"
@@ -23,11 +42,11 @@
       end
   end
 
-  function self_remover
+function self_remover
       sudo rm /usr/bin/distro_wallpapers
   end
 
-  function remover
+function remover
       if test -d /usr/share/wallpapers/Distro_wallpapers-CLI-fish/$distro
           rm -rf ~/.cache/Distro_wallpapers-CLI-fish/$distro
           sudo rm -rf /usr/share/wallpapers/Distro_wallpapers-CLI-fish/$distro
@@ -37,10 +56,10 @@
       end
   end
 
-  function wallpaper_list
+function wallpaper_list
     echo "---------online-----------"
       echo 'last update ->'
-       curl -L https://github.com/LinuxKits/Distro_wallpapers/releases/latest/download/date.txt
+       curl -L https://github.com/LinuxKits/Distro-wallpapers/releases/latest/download/date.txt
        echo "Available distros' wallpapers"
           echo "1-Debian | 2-Pop_OS!"
           echo "3-Zorin-OS | 4-aosp"
@@ -52,6 +71,7 @@
           echo "15-ubuntu | 16-Fedora"
           echo "17-endeavour | 18-MX-Linunx"
           echo "19-antiX | 20-kubuntu"
+          echo "21-remixOS"
       echo "----------local-------------"
           echo "Installed wallpaper"
           ls /usr/share/wallpapers/Distro_wallpapers-CLI-fish/ | sed '\~//~d'
@@ -99,6 +119,8 @@
                       set -g distro antiX;;$argv
                   case 20
                       set -g distro kubuntu;;$argv
+                  case 21
+                      set -g distro remixOS;$argv
                   case "*"
                       echo "unexcpet input"
               end
@@ -114,18 +136,24 @@ if test -d /usr/share/wallpapers/Distro_wallpapers-CLI-fish/
           echo "[error]no /usr/share/wallpapers/Distro_wallpapers-CLI-fish/ , using sudo to create one"
           sudo mkdir /usr/share/wallpapers/Distro_wallpapers-CLI-fish/
 end
-  echo "version 2021-04-05"
+  # checkdependence
+  checkdependence /usr/bin/wget
+  checkdependence /usr/bin/curl
+  # checknetwork
+  checknetwork
+  # checkversion
+  checkversion
   echo ""
-  echo "Script will need sudo to install wallpapers into /usr/share/wallpapers"
-  echo "1 wallpaper installer"
-  echo "2 wallpaper remover"
-  echo "3 wallpaper puller"
-  echo "4 install the script to /usr/bin"
-  echo "5 remove the script in /usr/bin"
-  echo "type the number follow and hit enter"
+  echo -e "\033[33mScript will need sudo to install wallpapers into /usr/share/wallpapers\033[0m"
+  echo -e "\033[36m(1) wallpaper installer\033[0m"
+  echo -e "\033[36m(2) wallpaper remover\033[0m"
+  echo -e "\033[36m(3) wallpaper puller\033[0m"
+  echo -e "\033[36m(4) install the script to /usr/bin\033[0m"
+  echo -e "\033[36m(5) remove the script in /usr/bin\033[0m"
+  echo -e "\033[33mtype the number follow and hit enter\033[0m"
   switch $argv
   case ""
-    read -P "input>" menu1
+    read -P "DWF>" menu1
       switch $menu1
       case 1
         wallpaper_list installer
