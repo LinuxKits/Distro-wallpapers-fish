@@ -1,5 +1,5 @@
 #!/usr/bin/fish
-set -g DWF_Version 2021-4-9-b17
+set -g DWF_Version 2021-4-9-b18
 function updater
   echo -e "\033[32m[Updater]Now DWF_Version = $DWF_Version\033[0m"
   set -g version_online (curl -s -L https://raw.githubusercontent.com/LinuxKits/Distro-wallpapers-fish/master/version)
@@ -166,6 +166,8 @@ end
   checknetwork
   # checkversion
   updater $DWF_Version
+  switch $argv
+  case ""
   while test "-0-" = "-0-"
   echo ""
   echo -e "\033[33mScript will need sudo to install wallpapers into /usr/share/wallpapers\033[0m"
@@ -176,8 +178,6 @@ end
   echo -e "\033[36m(5) remove the script in /usr/bin\033[0m"
   echo -e "\033[36m(6) exit\033[0m"
   echo -e "\033[33mtype the number follow and hit enter\033[0m"
-  switch $argv
-  case ""
     read -P "DWF>" menu1
       switch $menu1
       case 1
@@ -193,6 +193,7 @@ end
       case 6
         exit
       end
+    end
     case 1
       wallpaper_list installer
     case 2
@@ -204,7 +205,6 @@ end
     case 5
       self_remover
     case 6
-
+      echo $DWF_Version
     end
-  end
 # done
