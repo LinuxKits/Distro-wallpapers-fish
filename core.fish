@@ -16,7 +16,7 @@ end
 
 function checknetwork
   if curl -s -L https://github.com/LinuxKits/Distro-wallpapers | grep -q bluelake
-    echo -e "\033[32m[checknetwork]check passed - u`ve connect to github\033[0m"
+    echo -e "\033[32m[checknetwork]check passed - u`ve connected to github\033[0m"
   else
     echo -e "\033[0;31m[checknetwork]check failed - check your network connection\033[0m"
   end
@@ -96,7 +96,7 @@ function wallpaper_list
           ls /usr/share/wallpapers/Distro_wallpapers-CLI-fish/ | sed '\~//~d'
           echo "--------------------------"
           echo "type the number follow and hit enter"
-          read -P "inputbox>" wallpaper
+          read -P "DWF>" wallpaper
               switch $wallpaper
                   case 1
                       set -g distro Debian;;$argv
@@ -161,7 +161,7 @@ end
   # checknetwork
   checknetwork
   # checkversion
-  updater 2021-4-9-b12
+  updater 2021-4-9-b13
   echo ""
   echo -e "\033[33mScript will need sudo to install wallpapers into /usr/share/wallpapers\033[0m"
   echo -e "\033[36m(1) wallpaper installer\033[0m"
