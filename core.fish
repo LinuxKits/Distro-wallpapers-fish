@@ -1,7 +1,11 @@
 #!/usr/bin/fish
-function checkversion
-  if curl -s -L
-
+function updater
+  set -g version_online (curl -s -L https://raw.githubusercontent.com/LinuxKits/Distro-wallpapers-fish/master/version)
+  if test "$version_online" = "$argv"
+  else
+    echo -e "\033[32m[Updater]new version Available\033[0m"
+  end
+end
 function checkdependence
   if test -e $argv
     echo -e "\033[32m[checkdependence]check passed - $argv exist\033[0m"
@@ -142,7 +146,7 @@ end
   # checknetwork
   checknetwork
   # checkversion
-  checkversion
+  updater 2021-4-9-b12
   echo ""
   echo -e "\033[33mScript will need sudo to install wallpapers into /usr/share/wallpapers\033[0m"
   echo -e "\033[36m(1) wallpaper installer\033[0m"
