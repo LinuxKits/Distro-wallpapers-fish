@@ -161,7 +161,8 @@ end
   # checknetwork
   checknetwork
   # checkversion
-  updater 2021-4-9-b13
+  updater 2021-4-9-b14
+  while test "-0-" = "-0-"
   echo ""
   echo -e "\033[33mScript will need sudo to install wallpapers into /usr/share/wallpapers\033[0m"
   echo -e "\033[36m(1) wallpaper installer\033[0m"
@@ -169,6 +170,7 @@ end
   echo -e "\033[36m(3) wallpaper puller\033[0m"
   echo -e "\033[36m(4) install the script to /usr/bin\033[0m"
   echo -e "\033[36m(5) remove the script in /usr/bin\033[0m"
+  echo -e "\033[36m(6) exit\033[0m"
   echo -e "\033[33mtype the number follow and hit enter\033[0m"
   switch $argv
   case ""
@@ -184,6 +186,8 @@ end
         self_installer
       case 5
         self_remover
+      case 6
+        exit
       end
     case 1
       wallpaper_list installer
@@ -196,4 +200,5 @@ end
     case 5
       self_remover
     end
+  end
 # done
