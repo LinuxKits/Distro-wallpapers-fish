@@ -1,9 +1,11 @@
 #!/usr/bin/fish
+set -g DWF_Version 2021-4-9-b16
 function updater
+  echo -e "\033[32m[Updater]Now DWF_Version = $DWF_Version\033[0m"
   set -g version_online (curl -s -L https://raw.githubusercontent.com/LinuxKits/Distro-wallpapers-fish/master/version)
   if test "$version_online" = "$argv"
   else
-    echo -e "\033[32m[Updater]new version Available or network broken\033[0m"
+    echo -e "\033[0;31m[Updater]latest version [$version_online] Available on github or network broken\033[0m"
   end
 end
 function checkdependence
@@ -161,7 +163,7 @@ end
   # checknetwork
   checknetwork
   # checkversion
-  updater 2021-4-9-b14
+  updater $DWF_Version
   while test "-0-" = "-0-"
   echo ""
   echo -e "\033[33mScript will need sudo to install wallpapers into /usr/share/wallpapers\033[0m"
@@ -199,6 +201,8 @@ end
       self_installer
     case 5
       self_remover
+    case 6
+
     end
   end
 # done
