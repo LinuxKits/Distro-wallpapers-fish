@@ -11,7 +11,7 @@ Script will need sudo to install wallpapers into /usr/share/wallpapers
 4 install the script to /usr/bin
 5 remove the script in /usr/bin
 type the number follow and hit enter
-input>
+DWF>
 ```
 # Detailed information
 ## the first menu page
