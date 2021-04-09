@@ -1,5 +1,5 @@
 #!/usr/bin/fish
-set -g DWF_Version 2021-4-9-b16
+set -g DWF_Version 2021-4-9-b17
 function updater
   echo -e "\033[32m[Updater]Now DWF_Version = $DWF_Version\033[0m"
   set -g version_online (curl -s -L https://raw.githubusercontent.com/LinuxKits/Distro-wallpapers-fish/master/version)
@@ -41,14 +41,16 @@ function self_installer
       switch $installer_found_old_one
       case y
       sudo rm /usr/bin/distro_wallpapers
-      echo "OK-REINSTALL IT AGAIN"
+      echo "[cli]OK!---REINSTALL IT AGAIN"
       case n
       sudo cp core.fish /usr/bin/distro_wallpapers_fish
+      echo "[cli]Done!---Installed to /usr/bin/distro_wallpapers_fish"
       case "*"
         echo "unexcpet input"
       end
     else
     sudo cp core.fish /usr/bin/distro_wallpapers_fish
+    echo "[cli]Done!---Installed to /usr/bin/distro_wallpapers_fish"
   end
 end
 
