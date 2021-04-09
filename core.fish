@@ -166,6 +166,7 @@ end
   checknetwork
   # checkversion
   updater $DWF_Version
+  set -g version_online ""
   switch $argv
   case ""
   while test "-0-" = "-0-"
