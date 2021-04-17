@@ -56,11 +56,11 @@ end
 
 function installer
       if test -d ~/.cache/Distro_wallpapers-CLI-fish/$distro
-          sudo mv ~/.cache/Distro_wallpapers-CLI-fish/$distro /usr/share/wallpapers/Distro_wallpapers-CLI-fish/
+          sudo mv ~/.cache/Distro_wallpapers-CLI-fish/$distro /usr/share/backgrounds/Distro_wallpapers-CLI-fish/
           echo "[cli]Done!---Installed to /usr/share/wallpapers/distro_wallpapers-CLI-fish"
         else
           downloader
-          sudo mv ~/.cache/Distro_wallpapers-CLI-fish/$distro /usr/share/wallpapers/Distro_wallpapers-CLI-fish/
+          sudo mv ~/.cache/Distro_wallpapers-CLI-fish/$distro /usr/share/backgrounds/Distro_wallpapers-CLI-fish/
           echo "[cli]Done!---Installed to /usr/share/wallpapers/distro_wallpapers-CLI-fish"
       end
   end
@@ -70,9 +70,9 @@ function self_remover
   end
 
 function remover
-      if test -d /usr/share/wallpapers/Distro_wallpapers-CLI-fish/$distro
+      if test -d /usr/share/backgrounds/Distro_wallpapers-CLI-fish/$distro
           rm -rf ~/.cache/Distro_wallpapers-CLI-fish/$distro
-          sudo rm -rf /usr/share/wallpapers/Distro_wallpapers-CLI-fish/$distro
+          sudo rm -rf /usr/share/backgrounds/Distro_wallpapers-CLI-fish/$distro
           echo "[cli]Done!---removed from /usr/share/wallpapers/distro_wallpapers-CLI-fish"
         else
           echo "not installed"
@@ -97,7 +97,7 @@ function wallpaper_list
           echo "21-remixOS"
       echo "----------local-------------"
           echo "Installed wallpaper"
-          ls /usr/share/wallpapers/Distro_wallpapers-CLI-fish/ | sed '\~//~d'
+          ls /usr/share/backgrounds/Distro_wallpapers-CLI-fish/ | sed '\~//~d'
           echo "--------------------------"
           echo "type the number follow and hit enter"
           read -P "DWF>" wallpaper
@@ -148,16 +148,20 @@ function wallpaper_list
                       echo "unexcpet input"
               end
   end
+if test -d /usr/share/wallpapers/Distro_wallpapers-CLI-fish/
+  echo "[warning]found older folder,moving it to the new location"
+  sudo mv /usr/share/wallpapers/Distro_wallpapers-CLI-fish /usr/share/backgrounds
+end
 
 if test -d ~/.cache/Distro_wallpapers-CLI-fish/
       else
           mkdir ~/.cache/Distro_wallpapers-CLI-fish/
 end
 
-if test -d /usr/share/wallpapers/Distro_wallpapers-CLI-fish/
+if test -d /usr/share/backgrounds/Distro_wallpapers-CLI-fish/
       else
-          echo "[error]no /usr/share/wallpapers/Distro_wallpapers-CLI-fish/ , using sudo to create one"
-          sudo mkdir /usr/share/wallpapers/Distro_wallpapers-CLI-fish/
+          echo "[error]no /usr/share/backgrounds/Distro_wallpapers-CLI-fish/ , using sudo to create one"
+          sudo mkdir /usr/share/backgrounds/Distro_wallpapers-CLI-fish/
 end
   # checkdependence
   checkdependence /usr/bin/wget
