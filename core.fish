@@ -1,5 +1,5 @@
 #!/usr/bin/fish
-set -g DWF_Version 2021-4-9-b18
+set -g DWF_Version 2021-4-9-b20
 function updater
   echo -e "\033[32m[Updater]Now DWF_Version = $DWF_Version\033[0m"
   set -g version_online (curl -s -L https://raw.githubusercontent.com/LinuxKits/Distro-wallpapers-fish/master/version)
@@ -148,20 +148,34 @@ function wallpaper_list
                       echo "unexcpet input"
               end
   end
-if test -d /usr/share/wallpapers/Distro_wallpapers-CLI-fish/
-  echo "[warning]found older folder,moving it to the new location"
-  sudo mv /usr/share/wallpapers/Distro_wallpapers-CLI-fish /usr/share/backgrounds
-end
 
 if test -d ~/.cache/Distro_wallpapers-CLI-fish/
       else
           mkdir ~/.cache/Distro_wallpapers-CLI-fish/
 end
 
+if test -d /usr/share/backgrounds/
+else
+  echo "[error]no /usr/share/backgrounds , using sudo to create one"
+  sudo mkdir /usr/share/backgrounds
+end
+
 if test -d /usr/share/backgrounds/Distro_wallpapers-CLI-fish/
       else
           echo "[error]no /usr/share/backgrounds/Distro_wallpapers-CLI-fish/ , using sudo to create one"
           sudo mkdir /usr/share/backgrounds/Distro_wallpapers-CLI-fish/
+end
+
+if test -d /usr/share/wallpapers/
+else
+  echo "[error]no /usr/share/wallpapers/ , using sudo to create one"
+  sudo mkdir /usr/share/wallpapers
+end
+
+if test -d /usr/share/wallpapers/Distro_wallpapers-CLI-fish/
+      else
+          echo "[error]no /usr/share/wallpapers/Distro_wallpapers-CLI-fish/ , using sudo to link one"
+          sudo ln -s  /usr/share/backgrounds/Distro_wallpapers-CLI-fish/ /usr/share/wallpapers/Distro_wallpapers-CLI-fish
 end
   # checkdependence
   checkdependence /usr/bin/wget
