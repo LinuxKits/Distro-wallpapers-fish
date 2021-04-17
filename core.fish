@@ -1,5 +1,5 @@
 #!/usr/bin/fish
-set -g DWF_Version 2021-4-9-b20
+set -g DWF_Version 2021-4-17-b20
 function updater
   echo -e "\033[32m[Updater]Now DWF_Version = $DWF_Version\033[0m"
   set -g version_online (curl -s -L https://raw.githubusercontent.com/LinuxKits/Distro-wallpapers-fish/master/version)

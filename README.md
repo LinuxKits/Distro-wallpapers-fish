@@ -1,3 +1,9 @@
+# MOTD
+plz do this before flashing b20 today
+```
+sudo mv /usr/share/wallpapers/Distro_wallpapers-CLI-fish /usr/share/backgrounds/
+```
+or it will blow up ur all wallpapers
 # Distro_wallpapers-CLI-fish
 This is a fish shell script or program to browse, download, configure and install the wallpapers via nitrogen from [Distro_wallpapers](https://github.com/happyeggchen/Distro_wallpapers).
 
